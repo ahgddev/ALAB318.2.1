@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 const pug = require("pug");
 const app = express();
 const PORT = 3000;
@@ -23,6 +24,8 @@ const fruitFacts = [
 
 app.set("views", "./views");
 app.set("view engine", "pug");
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.render("index", { title: "Fruits Page" });
@@ -32,6 +35,9 @@ app.get("/:fruit", (req, res) => {
   let fruit = req.params.fruit;
   let factObj = fruitFacts.find(fName => fName.fruitName == fruit);
   res.render("fruit", { title: `${fruit} Page`, fruit: `${fruit}`, fact1: factObj.f1, fact2: factObj.f2, fact3: factObj.f3});
-});
+})
+.post('/emailsignup', function(req,res){
+    console.log(req.body);
+  })
 
 app.listen(PORT, () => console.log("App is running on Port: " + PORT));

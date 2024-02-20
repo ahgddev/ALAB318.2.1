@@ -3,12 +3,15 @@ html
     title= fruit
   body
     h1 Hello! This is the #{fruit} page! Here are some facts about #{fruit}s!
+    img
     p= fact1
     p= fact2
     p=  fact3
 
     h1 Get more #{fruit} facts in your email! 
-    input(type="text") 
-    button Submit 
+    br
+    form(action='emailsignup', method='post')
+        input(type="text", name='email')
+        input(type='submit', value='Submit') 
     br
     button(onclick="window.open('/','_parent')") Go Back Home
