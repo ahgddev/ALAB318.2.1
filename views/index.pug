@@ -3,6 +3,7 @@ html
     title= title
   body
     h1 Hello! This is the fruits page! What fruit do you want to learn about?
-    a apples
-    a bananas 
-    a grapes
+   
+  each fruit in ["apple","banana","grape"]
+    br
+    a(href=`/${fruit}`)= fruit
